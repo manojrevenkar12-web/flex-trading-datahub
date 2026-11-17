@@ -274,7 +274,7 @@ def write(sim: dict, root: Path) -> dict:
     for d in ("meters", "hems", "weather", "market", "trades", "desk_forecasts"):
         (raw / d).mkdir(parents=True, exist_ok=True)
     (root / "truth").mkdir(parents=True, exist_ok=True)
-    planted = {"stuck_meters": [], "substitute_meter_days": 0, "offline_device_days": 0, "counter_resets": 0, "resent_files": 0}
+    planted = {"stuck_meters": [], "substitute_register_days": 0, "offline_device_days": 0, "counter_resets": 0, "resent_files": 0}
     _meters(sim, raw / "meters", planted)
     _hems(sim, raw / "hems", planted)
     _weather(sim, raw / "weather")
@@ -317,7 +317,7 @@ def _meters(sim: dict, out: Path, planted: dict) -> None:
                 if r.random() < mc["substitute_share"]:
                     est = np.full_like(vals, float(vals.mean())) * r.uniform(0.7, 1.3)
                     versions = [(1, "substitute", est, arrive), (2, "measured", vals, arrive + pd.Timedelta(days=int(r.integers(2, 6))))]
-                    planted["substitute_meter_days"] += 1
+                    planted["substitute_register_days"] += 1
                 elif r.random() < mc["correction_share"]:
                     wrong = vals * r.uniform(0.5, 1.5)
                     versions = [(1, "measured", wrong, arrive), (2, "measured", vals, arrive + pd.Timedelta(days=int(r.integers(3, 8))))]

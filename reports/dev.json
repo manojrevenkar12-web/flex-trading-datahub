@@ -117,8 +117,8 @@
   "stuck_meters_false_alarms": 0,
   "counter_resets_planted": 18,
   "counter_resets_found": 18,
-  "substitute_meter_days_planted": 325,
-  "substitute_meter_days_seen": 324,
+  "substitute_register_days_planted": 325,
+  "substitute_register_days_seen": 325,
   "substitute_values_left_after_versions": 0,
   "duplicate_deliveries_skipped": 12,
   "dst_days": [
@@ -573,7 +573,7 @@
   "test_days": 7,
   "test_quarter_hours": 676
  },
- "seconds": 93,
+ "seconds": 80,
  "gate": [
   {
    "name": "dbt builds and every dbt test passes",

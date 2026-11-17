@@ -128,7 +128,7 @@ households, so the euro amounts are small. The ratios are the point.
 | fault | planted | handled |
 |---|---|---|
 | stuck registers | {fa['stuck_meters_planted']} | {fa['stuck_meters_found']} found, {fa['stuck_meters_false_alarms']} false alarms; values estimated from the meter's own profile for analysis |
-| meter-days first sent as substitutes | {fa['substitute_meter_days_planted']} | {fa['substitute_values_left_after_versions']} substitute values left once the measured ones arrived |
+| register-days first sent as substitute values | {fa['substitute_register_days_planted']} | {fa['substitute_register_days_seen']} seen, {fa['substitute_values_left_after_versions']} substitute values left once the measured ones arrived |
 | files delivered twice | {fa['duplicate_deliveries_skipped']} | all skipped at landing by content hash |
 | device counters restarted at zero | {fa['counter_resets_planted']} | {fa['counter_resets_found']} stitched on |
 | the night summer time ends | {dst['day'] if dst else '–'} | {dst['quarter_hours'] if dst else '–'} quarter hours, as expected |

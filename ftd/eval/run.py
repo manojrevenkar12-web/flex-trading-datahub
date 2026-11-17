@@ -150,7 +150,8 @@ def evaluate(world_file: str = "config/world.yaml", quick: bool = False, work: P
     dq = read(db, "select * from fct_data_quality_daily order by delivery_day")
     stuck = set(read(db, "select distinct meter_id from dq_stuck_meters")["meter_id"])
     resets = int(read(db, "select count(distinct device_id) as n from int_device_counters where is_reset")["n"][0])
-    subst = int(read(db, "select count(distinct meter_id || cast(" + "delivery_day" + " as varchar)) as n from (select meter_id, cast(timezone('Europe/Berlin', timezone('UTC', qh_start_utc)) as date) as delivery_day from stg_meter_readings where status = 'substitute')")["n"][0])
+    subst = int(read(db, "select count(*) as n from (select distinct meter_id, obis, cast(timezone('Europe/Berlin', timezone('UTC', qh_start_utc)) as date) "
+                         "from stg_meter_readings where status = 'substitute')")["n"][0])     # register-days, as the world counts them
     replaced = int(read(db, "select count(*) as n from int_meter_readings where status = 'substitute'")["n"][0])
     manifest = read(db, "select status, count(*) as n from stg_deliveries group by 1")
     dst_days = dq[dq["expected_quarter_hours"] != 96][["delivery_day", "quarter_hours", "expected_quarter_hours"]]
@@ -171,8 +172,8 @@ def evaluate(world_file: str = "config/world.yaml", quick: bool = False, work: P
             "stuck_meters_false_alarms": len(stuck - set(planted["stuck_meters"])),
             "counter_resets_planted": planted["counter_resets"],
             "counter_resets_found": resets,
-            "substitute_meter_days_planted": planted["substitute_meter_days"],
-            "substitute_meter_days_seen": subst,
+            "substitute_register_days_planted": planted["substitute_register_days"],
+            "substitute_register_days_seen": subst,
             "substitute_values_left_after_versions": replaced,
             "duplicate_deliveries_skipped": int(manifest.loc[manifest["status"] == "duplicate", "n"].sum()),
             "dst_days": [{"day": str(x.delivery_day)[:10], "quarter_hours": int(x.quarter_hours), "expected": int(x.expected_quarter_hours),

@@ -1,0 +1,683 @@
+{
+ "world": "H1",
+ "start": "2026-03-01",
+ "days": 31,
+ "customers": 400,
+ "devices": 421,
+ "raw": {
+  "meter_values": 1656928,
+  "device_reports": 799889,
+  "trade_versions": 6802,
+  "weather_runs": 156,
+  "files": {
+   "landed": 420,
+   "duplicate": 25
+  }
+ },
+ "dbt": {
+  "ok": true,
+  "failed": [],
+  "second_run_ok": true
+ },
+ "designs": {
+  "datahub": {
+   "quarter_hours": 2972,
+   "quarter_hours_expected": 2972,
+   "net_mwh_truth": 390.867,
+   "net_mwh_built": 390.831,
+   "net_abs_error_mwh": 0.152,
+   "net_within_half_percent": 1.0,
+   "class_abs_error_mwh": {
+    "base": 19.664,
+    "heat_pump": 3.082,
+    "ev": 17.384,
+    "pv": 2.585,
+    "battery": 0.944
+   },
+   "imbalance_cost_truth_eur": 131.08,
+   "imbalance_cost_built_eur": 127.24,
+   "imbalance_cost_daily_abs_error_eur": 8.91,
+   "procurement_cost_truth_eur": 35667.53,
+   "procurement_cost_built_eur": 35663.7,
+   "procurement_daily_abs_error_eur": 8.91,
+   "days_procurement_within_1pct": 1.0,
+   "attribution": {
+    "base": {
+     "truth_eur": 28.72,
+     "built_eur": -76.64
+    },
+    "heat_pump": {
+     "truth_eur": 700.09,
+     "built_eur": 684.68
+    },
+    "ev": {
+     "truth_eur": -155.77,
+     "built_eur": -47.69
+    },
+    "pv": {
+     "truth_eur": -182.72,
+     "built_eur": -175.89
+    },
+    "battery": {
+     "truth_eur": -80.08,
+     "built_eur": -78.06
+    }
+   },
+   "attribution_abs_error_eur": 237.7
+  },
+  "first_version_sql": {
+   "quarter_hours": 2972,
+   "quarter_hours_expected": 2972,
+   "net_mwh_truth": 390.867,
+   "net_mwh_built": 425.482,
+   "net_abs_error_mwh": 34.615,
+   "net_within_half_percent": 0.0,
+   "class_abs_error_mwh": {
+    "base": 241.477,
+    "heat_pump": 79.416,
+    "ev": 77.854,
+    "pv": 72.025,
+    "battery": 16.795
+   },
+   "imbalance_cost_truth_eur": 131.08,
+   "imbalance_cost_built_eur": -4723.23,
+   "imbalance_cost_daily_abs_error_eur": 5200.27,
+   "procurement_cost_truth_eur": 35667.53,
+   "procurement_cost_built_eur": 38000.83,
+   "procurement_daily_abs_error_eur": 3039.02,
+   "days_procurement_within_1pct": 0.0323,
+   "attribution": {
+    "base": {
+     "truth_eur": 28.72,
+     "built_eur": 3520.74
+    },
+    "heat_pump": {
+     "truth_eur": 700.09,
+     "built_eur": -2868.42
+    },
+    "ev": {
+     "truth_eur": -155.77,
+     "built_eur": -4070.43
+    },
+    "pv": {
+     "truth_eur": -182.72,
+     "built_eur": 8373.6
+    },
+    "battery": {
+     "truth_eur": -80.08,
+     "built_eur": -992.01
+    }
+   },
+   "attribution_abs_error_eur": 20443.44
+  }
+ },
+ "faults": {
+  "stuck_meters_planted": 6,
+  "stuck_meters_found": 6,
+  "stuck_meters_false_alarms": 0,
+  "counter_resets_planted": 71,
+  "counter_resets_found": 71,
+  "substitute_meter_days_planted": 867,
+  "substitute_meter_days_seen": 856,
+  "substitute_values_left_after_versions": 0,
+  "duplicate_deliveries_skipped": 25,
+  "dst_days": [
+   {
+    "day": "2026-03-29",
+    "quarter_hours": 92,
+    "expected": 92,
+    "first_version_sql": 92
+   }
+  ],
+  "calendar_ok_days": 31,
+  "ready_to_settle_days": 31
+ },
+ "idempotent": {
+  "second_landing": {
+   "landed": 0,
+   "duplicate_deliveries": 0,
+   "already_landed": 445
+  },
+  "marts_unchanged": true
+ },
+ "daily": [
+  {
+   "day": "2026-03-01",
+   "imbalance_cost_eur": 42.15,
+   "procurement_cost_eur": 1058.66,
+   "net_mwh": 11.153,
+   "attr_base_eur": 25.27,
+   "attr_heat_pump_eur": 120.16,
+   "attr_ev_eur": -25.3,
+   "attr_pv_eur": -23.85,
+   "attr_battery_eur": -1.86,
+   "attr_intraday_eur": -52.55,
+   "attr_rounding_eur": 0.27
+  },
+  {
+   "day": "2026-03-02",
+   "imbalance_cost_eur": 20.09,
+   "procurement_cost_eur": 776.31,
+   "net_mwh": 8.508,
+   "attr_base_eur": -18.27,
+   "attr_heat_pump_eur": 46.88,
+   "attr_ev_eur": 20.8,
+   "attr_pv_eur": 12.82,
+   "attr_battery_eur": -3.28,
+   "attr_intraday_eur": -38.74,
+   "attr_rounding_eur": -0.12
+  },
+  {
+   "day": "2026-03-03",
+   "imbalance_cost_eur": -49.29,
+   "procurement_cost_eur": 743.27,
+   "net_mwh": 8.478,
+   "attr_base_eur": -27.83,
+   "attr_heat_pump_eur": -83.67,
+   "attr_ev_eur": -7.51,
+   "attr_pv_eur": 15.5,
+   "attr_battery_eur": -4.48,
+   "attr_intraday_eur": 58.59,
+   "attr_rounding_eur": 0.11
+  },
+  {
+   "day": "2026-03-04",
+   "imbalance_cost_eur": -7.53,
+   "procurement_cost_eur": 930.03,
+   "net_mwh": 10.053,
+   "attr_base_eur": 0.76,
+   "attr_heat_pump_eur": -7.18,
+   "attr_ev_eur": -13.98,
+   "attr_pv_eur": -0.86,
+   "attr_battery_eur": -2.17,
+   "attr_intraday_eur": 16.0,
+   "attr_rounding_eur": -0.09
+  },
+  {
+   "day": "2026-03-05",
+   "imbalance_cost_eur": 122.9,
+   "procurement_cost_eur": 1160.95,
+   "net_mwh": 12.394,
+   "attr_base_eur": 13.37,
+   "attr_heat_pump_eur": 182.48,
+   "attr_ev_eur": 9.83,
+   "attr_pv_eur": 65.69,
+   "attr_battery_eur": -1.52,
+   "attr_intraday_eur": -146.89,
+   "attr_rounding_eur": -0.07
+  },
+  {
+   "day": "2026-03-06",
+   "imbalance_cost_eur": -43.24,
+   "procurement_cost_eur": 993.77,
+   "net_mwh": 11.236,
+   "attr_base_eur": 11.99,
+   "attr_heat_pump_eur": -95.4,
+   "attr_ev_eur": -27.29,
+   "attr_pv_eur": 29.06,
+   "attr_battery_eur": 1.23,
+   "attr_intraday_eur": 37.14,
+   "attr_rounding_eur": 0.04
+  },
+  {
+   "day": "2026-03-07",
+   "imbalance_cost_eur": 36.43,
+   "procurement_cost_eur": 1232.21,
+   "net_mwh": 13.358,
+   "attr_base_eur": -8.2,
+   "attr_heat_pump_eur": 58.59,
+   "attr_ev_eur": -0.84,
+   "attr_pv_eur": 23.03,
+   "attr_battery_eur": -1.52,
+   "attr_intraday_eur": -34.52,
+   "attr_rounding_eur": -0.1
+  },
+  {
+   "day": "2026-03-08",
+   "imbalance_cost_eur": -11.03,
+   "procurement_cost_eur": 1392.23,
+   "net_mwh": 14.801,
+   "attr_base_eur": -18.7,
+   "attr_heat_pump_eur": 3.59,
+   "attr_ev_eur": 6.05,
+   "attr_pv_eur": -11.12,
+   "attr_battery_eur": -4.6,
+   "attr_intraday_eur": 13.75,
+   "attr_rounding_eur": -0.0
+  },
+  {
+   "day": "2026-03-09",
+   "imbalance_cost_eur": 16.34,
+   "procurement_cost_eur": 1259.28,
+   "net_mwh": 13.887,
+   "attr_base_eur": -5.04,
+   "attr_heat_pump_eur": 82.17,
+   "attr_ev_eur": -1.1,
+   "attr_pv_eur": -41.83,
+   "attr_battery_eur": 0.49,
+   "attr_intraday_eur": -18.53,
+   "attr_rounding_eur": 0.18
+  },
+  {
+   "day": "2026-03-10",
+   "imbalance_cost_eur": -9.5,
+   "procurement_cost_eur": 1030.07,
+   "net_mwh": 11.5,
+   "attr_base_eur": -3.29,
+   "attr_heat_pump_eur": 17.56,
+   "attr_ev_eur": -12.71,
+   "attr_pv_eur": -19.72,
+   "attr_battery_eur": -0.56,
+   "attr_intraday_eur": 9.19,
+   "attr_rounding_eur": 0.02
+  },
+  {
+   "day": "2026-03-11",
+   "imbalance_cost_eur": 137.13,
+   "procurement_cost_eur": 1107.12,
+   "net_mwh": 11.958,
+   "attr_base_eur": 16.17,
+   "attr_heat_pump_eur": 246.76,
+   "attr_ev_eur": 6.41,
+   "attr_pv_eur": 6.82,
+   "attr_battery_eur": -3.71,
+   "attr_intraday_eur": -135.31,
+   "attr_rounding_eur": -0.01
+  },
+  {
+   "day": "2026-03-12",
+   "imbalance_cost_eur": -82.38,
+   "procurement_cost_eur": 1087.04,
+   "net_mwh": 12.086,
+   "attr_base_eur": -1.36,
+   "attr_heat_pump_eur": -131.41,
+   "attr_ev_eur": -16.04,
+   "attr_pv_eur": -24.07,
+   "attr_battery_eur": 3.1,
+   "attr_intraday_eur": 87.55,
+   "attr_rounding_eur": -0.15
+  },
+  {
+   "day": "2026-03-13",
+   "imbalance_cost_eur": 53.09,
+   "procurement_cost_eur": 1082.78,
+   "net_mwh": 12.022,
+   "attr_base_eur": 2.91,
+   "attr_heat_pump_eur": 124.37,
+   "attr_ev_eur": -5.44,
+   "attr_pv_eur": 8.84,
+   "attr_battery_eur": -2.31,
+   "attr_intraday_eur": -75.19,
+   "attr_rounding_eur": -0.1
+  },
+  {
+   "day": "2026-03-14",
+   "imbalance_cost_eur": -51.0,
+   "procurement_cost_eur": 1322.61,
+   "net_mwh": 14.003,
+   "attr_base_eur": -20.6,
+   "attr_heat_pump_eur": -78.64,
+   "attr_ev_eur": 4.32,
+   "attr_pv_eur": 10.88,
+   "attr_battery_eur": -7.48,
+   "attr_intraday_eur": 40.5,
+   "attr_rounding_eur": 0.01
+  },
+  {
+   "day": "2026-03-15",
+   "imbalance_cost_eur": -1.9,
+   "procurement_cost_eur": 1302.12,
+   "net_mwh": 13.745,
+   "attr_base_eur": 8.03,
+   "attr_heat_pump_eur": 14.1,
+   "attr_ev_eur": -14.56,
+   "attr_pv_eur": -7.32,
+   "attr_battery_eur": -4.46,
+   "attr_intraday_eur": 2.19,
+   "attr_rounding_eur": 0.12
+  },
+  {
+   "day": "2026-03-16",
+   "imbalance_cost_eur": -45.14,
+   "procurement_cost_eur": 1230.09,
+   "net_mwh": 13.553,
+   "attr_base_eur": -16.65,
+   "attr_heat_pump_eur": -43.25,
+   "attr_ev_eur": 11.97,
+   "attr_pv_eur": -47.63,
+   "attr_battery_eur": -1.22,
+   "attr_intraday_eur": 51.63,
+   "attr_rounding_eur": -0.0
+  },
+  {
+   "day": "2026-03-17",
+   "imbalance_cost_eur": 2.85,
+   "procurement_cost_eur": 1375.65,
+   "net_mwh": 15.129,
+   "attr_base_eur": -1.97,
+   "attr_heat_pump_eur": -1.92,
+   "attr_ev_eur": -7.0,
+   "attr_pv_eur": 4.15,
+   "attr_battery_eur": -1.87,
+   "attr_intraday_eur": 11.58,
+   "attr_rounding_eur": -0.11
+  },
+  {
+   "day": "2026-03-18",
+   "imbalance_cost_eur": 37.01,
+   "procurement_cost_eur": 1060.62,
+   "net_mwh": 11.488,
+   "attr_base_eur": -5.51,
+   "attr_heat_pump_eur": 113.57,
+   "attr_ev_eur": 11.08,
+   "attr_pv_eur": -47.01,
+   "attr_battery_eur": -2.8,
+   "attr_intraday_eur": -32.22,
+   "attr_rounding_eur": -0.09
+  },
+  {
+   "day": "2026-03-19",
+   "imbalance_cost_eur": 36.29,
+   "procurement_cost_eur": 999.99,
+   "net_mwh": 11.082,
+   "attr_base_eur": -11.54,
+   "attr_heat_pump_eur": 13.72,
+   "attr_ev_eur": 5.75,
+   "attr_pv_eur": 60.35,
+   "attr_battery_eur": 5.54,
+   "attr_intraday_eur": -37.63,
+   "attr_rounding_eur": 0.1
+  },
+  {
+   "day": "2026-03-20",
+   "imbalance_cost_eur": 4.56,
+   "procurement_cost_eur": 1148.17,
+   "net_mwh": 12.816,
+   "attr_base_eur": 34.03,
+   "attr_heat_pump_eur": -4.63,
+   "attr_ev_eur": -6.29,
+   "attr_pv_eur": 0.91,
+   "attr_battery_eur": -1.26,
+   "attr_intraday_eur": -18.21,
+   "attr_rounding_eur": 0.01
+  },
+  {
+   "day": "2026-03-21",
+   "imbalance_cost_eur": -78.24,
+   "procurement_cost_eur": 1273.28,
+   "net_mwh": 13.711,
+   "attr_base_eur": -16.73,
+   "attr_heat_pump_eur": -131.32,
+   "attr_ev_eur": -3.65,
+   "attr_pv_eur": -15.56,
+   "attr_battery_eur": 0.74,
+   "attr_intraday_eur": 88.28,
+   "attr_rounding_eur": 0.01
+  },
+  {
+   "day": "2026-03-22",
+   "imbalance_cost_eur": 84.96,
+   "procurement_cost_eur": 1157.03,
+   "net_mwh": 13.271,
+   "attr_base_eur": 23.68,
+   "attr_heat_pump_eur": 229.48,
+   "attr_ev_eur": -7.7,
+   "attr_pv_eur": -72.36,
+   "attr_battery_eur": -8.09,
+   "attr_intraday_eur": -80.08,
+   "attr_rounding_eur": 0.04
+  },
+  {
+   "day": "2026-03-23",
+   "imbalance_cost_eur": 18.72,
+   "procurement_cost_eur": 1108.0,
+   "net_mwh": 12.245,
+   "attr_base_eur": -13.96,
+   "attr_heat_pump_eur": 76.24,
+   "attr_ev_eur": 6.79,
+   "attr_pv_eur": -28.87,
+   "attr_battery_eur": -3.07,
+   "attr_intraday_eur": -18.61,
+   "attr_rounding_eur": 0.22
+  },
+  {
+   "day": "2026-03-24",
+   "imbalance_cost_eur": 36.96,
+   "procurement_cost_eur": 1134.72,
+   "net_mwh": 12.761,
+   "attr_base_eur": -20.82,
+   "attr_heat_pump_eur": 61.51,
+   "attr_ev_eur": 15.59,
+   "attr_pv_eur": 29.12,
+   "attr_battery_eur": -0.15,
+   "attr_intraday_eur": -48.36,
+   "attr_rounding_eur": 0.07
+  },
+  {
+   "day": "2026-03-25",
+   "imbalance_cost_eur": 27.97,
+   "procurement_cost_eur": 1409.93,
+   "net_mwh": 15.073,
+   "attr_base_eur": 4.7,
+   "attr_heat_pump_eur": 102.66,
+   "attr_ev_eur": -2.68,
+   "attr_pv_eur": -27.19,
+   "attr_battery_eur": -4.67,
+   "attr_intraday_eur": -44.78,
+   "attr_rounding_eur": -0.06
+  },
+  {
+   "day": "2026-03-26",
+   "imbalance_cost_eur": 1.3,
+   "procurement_cost_eur": 1265.05,
+   "net_mwh": 14.533,
+   "attr_base_eur": 31.88,
+   "attr_heat_pump_eur": -5.77,
+   "attr_ev_eur": -14.31,
+   "attr_pv_eur": 3.05,
+   "attr_battery_eur": -7.09,
+   "attr_intraday_eur": -6.35,
+   "attr_rounding_eur": -0.09
+  },
+  {
+   "day": "2026-03-27",
+   "imbalance_cost_eur": -33.96,
+   "procurement_cost_eur": 1182.09,
+   "net_mwh": 13.058,
+   "attr_base_eur": -15.39,
+   "attr_heat_pump_eur": -66.7,
+   "attr_ev_eur": 7.45,
+   "attr_pv_eur": 13.62,
+   "attr_battery_eur": -0.43,
+   "attr_intraday_eur": 27.52,
+   "attr_rounding_eur": -0.02
+  },
+  {
+   "day": "2026-03-28",
+   "imbalance_cost_eur": 3.85,
+   "procurement_cost_eur": 1200.59,
+   "net_mwh": 12.877,
+   "attr_base_eur": 19.72,
+   "attr_heat_pump_eur": 27.87,
+   "attr_ev_eur": -5.8,
+   "attr_pv_eur": -28.47,
+   "attr_battery_eur": -4.3,
+   "attr_intraday_eur": -5.2,
+   "attr_rounding_eur": 0.02
+  },
+  {
+   "day": "2026-03-29",
+   "imbalance_cost_eur": -30.11,
+   "procurement_cost_eur": 1187.02,
+   "net_mwh": 12.625,
+   "attr_base_eur": 14.49,
+   "attr_heat_pump_eur": -30.73,
+   "attr_ev_eur": -16.74,
+   "attr_pv_eur": -38.6,
+   "attr_battery_eur": -3.92,
+   "attr_intraday_eur": 45.35,
+   "attr_rounding_eur": 0.02
+  },
+  {
+   "day": "2026-03-30",
+   "imbalance_cost_eur": -37.12,
+   "procurement_cost_eur": 1274.71,
+   "net_mwh": 14.084,
+   "attr_base_eur": -42.76,
+   "attr_heat_pump_eur": -19.59,
+   "attr_ev_eur": 17.97,
+   "attr_pv_eur": -25.64,
+   "attr_battery_eur": -2.47,
+   "attr_intraday_eur": 35.53,
+   "attr_rounding_eur": -0.16
+  },
+  {
+   "day": "2026-03-31",
+   "imbalance_cost_eur": -74.92,
+   "procurement_cost_eur": 1178.34,
+   "net_mwh": 13.345,
+   "attr_base_eur": -34.99,
+   "attr_heat_pump_eur": -136.82,
+   "attr_ev_eur": 17.24,
+   "attr_pv_eur": 0.4,
+   "attr_battery_eur": -9.88,
+   "attr_intraday_eur": 89.08,
+   "attr_rounding_eur": 0.05
+  }
+ ],
+ "relative": {
+  "net_abs_error_share": 0.0004,
+  "first_version_net_abs_error_share": 0.0886,
+  "imbalance_error_vs_first_version": 0.0017,
+  "attribution_error_vs_first_version": 0.0116,
+  "calendar_ok_share": 1.0,
+  "duplicates_skipped_share": 1.0
+ },
+ "forecast": {
+  "gate_features": {
+   "backtest_mae_kwh": 17.9,
+   "live_mae_kwh": 17.9,
+   "live_exposure_eur": 1314.83,
+   "optimism_kwh": 0.0
+  },
+  "leaky_features": {
+   "backtest_mae_kwh": 20.17,
+   "live_mae_kwh": 21.27,
+   "live_exposure_eur": 1646.15,
+   "optimism_kwh": 1.1
+  },
+  "desk_day_ahead": {
+   "live_mae_kwh": 13.26,
+   "live_exposure_eur": 1068.21
+  },
+  "test_days": 7,
+  "test_quarter_hours": 668
+ },
+ "seconds": 95,
+ "gate": [
+  {
+   "name": "dbt builds and every dbt test passes",
+   "metric": "dbt.ok",
+   "op": "==",
+   "value": true,
+   "target": true,
+   "pass": true
+  },
+  {
+   "name": "every delivery day has its quarter hours (92 / 96 / 100)",
+   "metric": "relative.calendar_ok_share",
+   "op": "==",
+   "value": 1.0,
+   "target": 1.0,
+   "pass": true
+  },
+  {
+   "name": "portfolio energy off by under 1% in total",
+   "metric": "relative.net_abs_error_share",
+   "op": "<=",
+   "value": 0.0004,
+   "target": 0.01,
+   "pass": true
+  },
+  {
+   "name": "quarter hours within 0.5% of the true net load",
+   "metric": "designs.datahub.net_within_half_percent",
+   "op": ">=",
+   "value": 1.0,
+   "target": 0.7,
+   "pass": true
+  },
+  {
+   "name": "days with procurement cost within 1%",
+   "metric": "designs.datahub.days_procurement_within_1pct",
+   "op": ">=",
+   "value": 1.0,
+   "target": 0.95,
+   "pass": true
+  },
+  {
+   "name": "imbalance cost error, as a share of the first version's",
+   "metric": "relative.imbalance_error_vs_first_version",
+   "op": "<=",
+   "value": 0.0017,
+   "target": 0.1,
+   "pass": true
+  },
+  {
+   "name": "attribution error, as a share of the first version's",
+   "metric": "relative.attribution_error_vs_first_version",
+   "op": "<=",
+   "value": 0.0116,
+   "target": 0.1,
+   "pass": true
+  },
+  {
+   "name": "every stuck register found",
+   "metric": "faults.stuck_meters_found",
+   "op": "==",
+   "value": 6,
+   "target": 6,
+   "pass": true
+  },
+  {
+   "name": "no working meter called stuck",
+   "metric": "faults.stuck_meters_false_alarms",
+   "op": "==",
+   "value": 0,
+   "target": 0,
+   "pass": true
+  },
+  {
+   "name": "no substitute value left once a measured one arrived",
+   "metric": "faults.substitute_values_left_after_versions",
+   "op": "==",
+   "value": 0,
+   "target": 0,
+   "pass": true
+  },
+  {
+   "name": "every resent file skipped",
+   "metric": "relative.duplicates_skipped_share",
+   "op": "==",
+   "value": 1.0,
+   "target": 1.0,
+   "pass": true
+  },
+  {
+   "name": "a second run changes nothing",
+   "metric": "idempotent.marts_unchanged",
+   "op": "==",
+   "value": true,
+   "target": true,
+   "pass": true
+  },
+  {
+   "name": "the forecast backtest is what production gets",
+   "metric": "forecast.gate_features.optimism_kwh",
+   "op": "<=",
+   "value": 0.0,
+   "target": 0.1,
+   "pass": true
+  }
+ ]
+}

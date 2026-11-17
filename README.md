@@ -40,12 +40,12 @@ Same bronze files. The first version is plain SQL that handles units and offsets
 
 | | first version | **this warehouse** | held-out month (this vs first) |
 |---|---|---|---|
-| Portfolio energy off from the truth | 5.39 MWh (2.67%) | 0.64 MWh (0.32%) | – |
-| Quarter hours within 0.5% of the true net load | 7.5% | 78.5% | – |
-| Imbalance cost for the month (truth) | -€2,039 (-€65) | -€97 (-€65) | – |
-| Imbalance cost, sum of daily errors | €2,014 | €46 | – |
-| Days with procurement cost within 1% | 16% | 100% | – |
-| Imbalance cost attribution off from the truth | €6,375 | €141 | – |
+| Portfolio energy off from the truth | 5.39 MWh (2.67%) | 0.64 MWh (0.32%) | 0.15 MWh vs 34.62 |
+| Quarter hours within 0.5% of the true net load | 7.5% | 78.5% | 100.0% vs 0.0% |
+| Imbalance cost for the month (truth) | -€2,039 (-€65) | -€97 (-€65) | €127 vs -€4,723 (€131) |
+| Imbalance cost, sum of daily errors | €2,014 | €46 | €9 vs €5,200 |
+| Days with procurement cost within 1% | 16% | 100% | 100% vs 3% |
+| Imbalance cost attribution off from the truth | €6,375 | €141 | €238 vs €20,443 |
 
 Dev month: 1,547,040 meter values, 666,760 device reports,
 6,407 trade versions and 157 forecast runs. The portfolio is a few hundred
@@ -66,7 +66,7 @@ households, so the euro amounts are small. The ratios are the point.
 | fault | planted | handled |
 |---|---|---|
 | stuck registers | 3 | 3 found, 0 false alarms; values estimated from the meter's own profile for analysis |
-| meter-days first sent as substitutes | 325 | 0 substitute values left once the measured ones arrived |
+| register-days first sent as substitute values | 325 | 325 seen, 0 substitute values left once the measured ones arrived |
 | files delivered twice | 12 | all skipped at landing by content hash |
 | device counters restarted at zero | 18 | 18 stitched on |
 | the night summer time ends | 2026-10-25 | 100 quarter hours, as expected |
@@ -95,21 +95,21 @@ The gate was written after the first dev results and before the held-out month w
 
 | line | dev | held-out H1 |
 |---|---|---|
-| dbt builds and every dbt test passes | yes ✅ | – |
-| every delivery day has its quarter hours (92 / 96 / 100) | 100.0% ✅ | – |
-| portfolio energy off by under 1% in total | 0.3% ✅ | – |
-| quarter hours within 0.5% of the true net load | 78.5% ✅ | – |
-| days with procurement cost within 1% | 100.0% ✅ | – |
-| imbalance cost error, as a share of the first version's | 2.3% ✅ | – |
-| attribution error, as a share of the first version's | 2.2% ✅ | – |
-| every stuck register found | 3 ✅ | – |
-| no working meter called stuck | 0 ✅ | – |
-| no substitute value left once a measured one arrived | 0 ✅ | – |
-| every resent file skipped | 100.0% ✅ | – |
-| a second run changes nothing | yes ✅ | – |
-| the forecast backtest is what production gets | 0.0 kWh ✅ | – |
+| dbt builds and every dbt test passes | yes ✅ | yes ✅ |
+| every delivery day has its quarter hours (92 / 96 / 100) | 100.0% ✅ | 100.0% ✅ |
+| portfolio energy off by under 1% in total | 0.3% ✅ | 0.0% ✅ |
+| quarter hours within 0.5% of the true net load | 78.5% ✅ | 100.0% ✅ |
+| days with procurement cost within 1% | 100.0% ✅ | 100.0% ✅ |
+| imbalance cost error, as a share of the first version's | 2.3% ✅ | 0.2% ✅ |
+| attribution error, as a share of the first version's | 2.2% ✅ | 1.2% ✅ |
+| every stuck register found | 3 ✅ | 6 ✅ |
+| no working meter called stuck | 0 ✅ | 0 ✅ |
+| no substitute value left once a measured one arrived | 0 ✅ | 0 ✅ |
+| every resent file skipped | 100.0% ✅ | 100.0% ✅ |
+| a second run changes nothing | yes ✅ | yes ✅ |
+| the forecast backtest is what production gets | 0.0 kWh ✅ | 0.0 kWh ✅ |
 
-Dev passes 13 of 13 lines. The held-out month has not been run yet.
+Dev passes 13 of 13 lines. The held-out month passed 13 of 13. [docs/heldout.md](docs/heldout.md) has what it stressed and what came out.
 
 ## Run it
 
