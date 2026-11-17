@@ -1,0 +1,55 @@
+# World D1: a dynamic-tariff supplier's portfolio for October 2026 (delivery days in Europe/Berlin, including the
+# end of summer time on 25 October). Read only by ftd/world. Written before the first result.
+name: D1
+seed: d1-flex
+start: "2026-10-01"
+days: 31
+customers: 400
+quick: {days: 4, customers: 40, start: "2026-10-24"}
+
+devices: {ev: 0.30, ev_smart: 0.5, heat_pump: 0.20, pv: 0.25, battery_given_pv: 0.4}
+
+weather:                         # Berlin-like October
+  temp_mean: 11.0
+  temp_daily_swing: 6.0
+  temp_noise: 1.8
+  cloud_persistence: 0.92
+  forecast_error_da: {temp: 1.6, cloud: 0.18}     # issued the day before at 06:00 UTC
+  forecast_error_id: {temp: 0.6, cloud: 0.08}     # issued every 6 hours
+
+market:
+  da_base: 95.0
+  da_residual_slope: 60.0
+  da_solar_slope: 70.0
+  da_noise: 12.0
+  id_noise: 9.0
+  id_error_slope: 35.0
+  rebap_spread: [15.0, 120.0]
+  rebap_spike_share: 0.02
+  rebap_revision_share: 0.10
+  rebap_final_after_days: 20
+
+desk:                            # the trading desk's own class forecasts at the day-ahead gate
+  base_error: 0.06
+  ev_error: 0.25
+  ev_smart_shift_known: 0.7      # how much of the smart charging shift the desk anticipates
+  intraday_cover: 0.5            # share of the expected deviation closed intraday
+
+meters:
+  mdm_b_share: 0.3               # this metering operator sends Wh integers and local times without offset
+  arrival: {d1: 0.85, d2: 0.10, d3: 0.05}
+  substitute_share: 0.02         # meter-days first sent as estimated values, measured values follow
+  resend_share: 0.03             # whole files sent twice
+  correction_share: 0.01         # meter-days corrected later with a higher version
+  stuck_meters: 3                # meters that repeat the same value for days (a fault to find)
+
+hems:
+  report_minutes: [6, 40]
+  offline_share: 0.03            # device-days with a gap of 2-12 hours
+  reset_share: 0.002             # counters that restart at zero after a firmware update
+  duplicate_share: 0.02
+
+trades:
+  amend_share: 0.05
+  cancel_share: 0.02
+  resend_share: 0.03

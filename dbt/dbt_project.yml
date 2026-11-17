@@ -1,0 +1,23 @@
+name: flex_trading
+version: "1.0.0"
+config-version: 2
+profile: flex_trading
+
+model-paths: ["models"]
+macro-paths: ["macros"]
+test-paths: ["tests"]
+target-path: "target"
+clean-targets: ["target"]
+
+vars:
+  lake: "../lake"                 # bronze Parquet; on AWS this is the S3 prefix Athena reads
+  gate_hour_local: 12             # the day-ahead auction gate: features may only use what was known by then
+
+models:
+  flex_trading:
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: table
+    marts:
+      +materialized: table

@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: fct_portfolio_qh
+    description: One row per quarter hour of each delivery day; metered load, device classes, positions, prices, imbalance and its attribution.
+    columns:
+      - name: qh_start_utc
+        tests: [unique, not_null]
+      - name: delivery_day
+        tests: [not_null]
+      - name: da_eur_mwh
+        tests: [not_null]
+      - name: rebap_eur_mwh
+        tests: [not_null]
+  - name: fct_pnl_daily
+    columns:
+      - name: delivery_day
+        tests: [unique, not_null]
+  - name: fct_data_quality_daily
+    columns:
+      - name: delivery_day
+        tests: [unique, not_null]
+      - name: calendar_ok
+        tests:
+          - accepted_values:
+              values: [true]
+  - name: feat_load_qh
+    columns:
+      - name: qh_start_utc
+        tests: [unique, not_null]

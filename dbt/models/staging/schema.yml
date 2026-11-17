@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: stg_meter_readings
+    columns:
+      - name: qh_start_utc
+        tests: [not_null]
+      - name: kwh
+        tests: [not_null]
+      - name: unit
+        tests:
+          - accepted_values:
+              values: ['Wh', 'kWh', 'MWh']
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['measured', 'substitute']
+  - name: stg_trades
+    columns:
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['active', 'cancelled']
+      - name: product
+        tests:
+          - accepted_values:
+              values: ['DA', 'ID']
+  - name: stg_rebap
+    columns:
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['preliminary', 'final']

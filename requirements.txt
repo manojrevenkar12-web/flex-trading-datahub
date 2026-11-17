@@ -1,0 +1,12 @@
+dbt-core==1.12.6
+dbt-duckdb==1.11.0
+duckdb==2.0.0
+pandas==3.1.0
+numpy==2.5.3
+pyarrow==26.0.0
+PyYAML==6.0.3
+lightgbm==4.7.0
+dash==4.5.0
+plotly==7.1.0
+pytest==9.1.1
+ruff==0.14.3

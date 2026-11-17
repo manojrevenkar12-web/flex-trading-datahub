@@ -1,0 +1,9 @@
+flex_trading:
+  target: local
+  outputs:
+    local:
+      type: duckdb
+      path: "{{ env_var('FTD_DUCKDB', '../warehouse/flex.duckdb') }}"
+      threads: 4
+      settings:
+        TimeZone: UTC

@@ -1,0 +1,44 @@
+name: ci
+on:
+  push:
+  pull_request:
+
+env:
+  DBT_SEND_ANONYMOUS_USAGE_STATS: "false"
+  DO_NOT_TRACK: "1"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12", cache: pip}
+      - run: pip install -r requirements.txt
+      - run: ruff check .
+      - name: quick world built with dbt and tested
+        run: python -m pytest -q
+      - name: README matches the reports
+        run: python -m ftd.eval.cli readme --check
+      - name: committed dev report passes the gate
+        run: python -m ftd.eval.cli gate && git diff --exit-code reports/dev.json
+
+  evaluate-quick:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12", cache: pip}
+      - run: pip install -r requirements.txt
+      - name: whole evaluation on the four-day world (simulate, land twice, dbt build, first version, forecast, gate)
+        run: python -m ftd.eval.cli evaluate --quick
+
+  airflow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install "apache-airflow>=3.0,<4" pytest pyyaml
+      - name: the DAG imports and has its tasks
+        run: python -m pytest -q --noconftest -p no:cacheprovider tests/test_dag.py

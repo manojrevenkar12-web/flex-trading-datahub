@@ -1,0 +1,43 @@
+/* Layout and type. Every value comes from the custom properties the app writes from dashboard/theme.py. */
+@font-face { font-family: "Lora"; src: url("Lora-Variable.ttf") format("truetype"); font-weight: 400 700; }
+* { box-sizing: border-box; }
+html { background: var(--paper); color: var(--ink); font-family: var(--font-body); line-height: var(--leading); }
+body { margin: 0; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.page { max-width: var(--page); margin: 0 auto; padding: var(--space-8) var(--space-6) var(--space-16); }
+.header { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-6); font-size: var(--text-sm); color: var(--ink-soft); border-bottom: 1px solid var(--rule); padding-bottom: var(--space-3); }
+.header strong { color: var(--ink); }
+.hero { padding: var(--space-8) 0 var(--space-12); }
+.title { font-family: var(--font-display); font-size: var(--text-hero); line-height: var(--leading-tight); font-weight: 600; letter-spacing: -0.01em; max-width: 22ch; margin: 0 0 var(--space-4); }
+.lede { color: var(--ink-soft); max-width: var(--measure); margin: 0 0 var(--space-6); }
+.controls { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4); }
+.controls button { font: inherit; font-size: var(--text-sm); background: var(--paper-raised); color: var(--ink); border: 1px solid var(--rule); border-radius: var(--radius); padding: var(--space-2) var(--space-3); cursor: pointer; transition: border-color var(--fade) ease; }
+.controls button:hover { border-color: var(--ink-soft); }
+.day-picker { min-width: 14rem; font-size: var(--text-sm); }
+.split { display: grid; grid-template-columns: minmax(0, 1fr) var(--side); gap: var(--space-8); align-items: start; }
+@media (max-width: 64rem) { .split { grid-template-columns: minmax(0, 1fr); } }
+.side { border-left: 1px solid var(--rule); padding-left: var(--space-6); }
+@media (max-width: 64rem) { .side { border-left: 0; padding-left: 0; border-top: 1px solid var(--rule); padding-top: var(--space-4); } }
+.stat { margin: 0 0 var(--space-4); }
+.stat b { display: block; font-family: var(--font-display); font-size: var(--text-xl); font-weight: 600; line-height: var(--leading-tight); font-variant-numeric: tabular-nums; }
+.stat span { color: var(--ink-soft); font-size: var(--text-sm); }
+.flag { display: inline-block; font-size: var(--text-xs); padding: var(--space-1) var(--space-2); border-radius: var(--radius); background: var(--paper); border: 1px solid var(--rule); margin: 0 var(--space-1) var(--space-1) 0; }
+.flag[data-bad="true"] { color: var(--bad); border-color: var(--bad); }
+.section { padding: var(--space-12) 0 var(--space-8); border-top: 1px solid var(--rule); }
+.section h2 { font-family: var(--font-display); font-size: var(--text-xl); line-height: var(--leading-tight); font-weight: 600; margin: 0 0 var(--space-3); max-width: var(--measure); }
+.section p.lede { margin-bottom: var(--space-6); }
+table.data { width: 100%; border-collapse: collapse; font-size: var(--text-sm); font-variant-numeric: tabular-nums; }
+table.data th, table.data td { text-align: left; padding: var(--space-2) var(--space-4) var(--space-2) 0; border-bottom: 1px solid var(--rule); }
+table.data thead th { color: var(--ink-soft); font-weight: 500; }
+table.data td[data-bad="true"] { color: var(--bad); font-weight: 600; }
+table.data td[data-good="true"] { color: var(--good); font-weight: 600; }
+.scroll { overflow-x: auto; }
+.state { max-width: var(--measure); padding: var(--space-8) 0; }
+.state p.state-title { font-family: var(--font-display); font-size: var(--text-lg); margin: 0 0 var(--space-2); }
+.state p { color: var(--ink-soft); margin: 0 0 var(--space-4); }
+.state button { font: inherit; font-weight: 600; color: var(--paper-raised); background: var(--ink); border: 0; border-radius: var(--radius); padding: var(--space-2) var(--space-4); cursor: pointer; }
+.skeleton { display: grid; gap: var(--space-3); padding: var(--space-6) 0; }
+.bone { height: var(--space-12); border-radius: var(--radius); background: linear-gradient(90deg, var(--paper-raised), var(--rule), var(--paper-raised)); background-size: 200% 100%; animation: shimmer 1.4s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .bone { animation: none; } }
+@keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+.footer { border-top: 1px solid var(--rule); padding-top: var(--space-6); color: var(--ink-soft); font-size: var(--text-sm); max-width: var(--measure); }

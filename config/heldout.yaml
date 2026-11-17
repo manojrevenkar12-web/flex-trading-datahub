@@ -1,0 +1,71 @@
+# World H1, the held-out world: March 2026, including the start of summer time on 29 March (92 quarter hours).
+# Written before its first result and run once (python -m ftd.eval.cli heldout). On purpose: a colder month with more
+# heat pumps, more EVs charging on prices, half the meters at the operator that sends Wh in local time, some days of
+# the other operator sent in UTC, twice the substitutes, resends, corrections and stuck registers, devices offline
+# twice as often, more trade amendments and cancellations, and more revised imbalance prices.
+name: H1
+seed: h1-flex
+start: '2026-03-01'
+days: 31
+customers: 400
+quick:
+  days: 4
+  customers: 40
+  start: '2026-03-28'
+devices:
+  ev: 0.35
+  ev_smart: 0.7
+  heat_pump: 0.3
+  pv: 0.3
+  battery_given_pv: 0.5
+weather:
+  temp_mean: 5.0
+  temp_daily_swing: 6.0
+  temp_noise: 2.5
+  cloud_persistence: 0.92
+  forecast_error_da:
+    temp: 2.2
+    cloud: 0.24
+  forecast_error_id:
+    temp: 0.6
+    cloud: 0.08
+market:
+  da_base: 95.0
+  da_residual_slope: 60.0
+  da_solar_slope: 70.0
+  da_noise: 12.0
+  id_noise: 9.0
+  id_error_slope: 35.0
+  rebap_spread:
+  - 15.0
+  - 120.0
+  rebap_spike_share: 0.04
+  rebap_revision_share: 0.2
+  rebap_final_after_days: 20
+desk:
+  base_error: 0.06
+  ev_error: 0.25
+  ev_smart_shift_known: 0.7
+  intraday_cover: 0.5
+meters:
+  mdm_b_share: 0.5
+  arrival:
+    d1: 0.85
+    d2: 0.1
+    d3: 0.05
+  substitute_share: 0.05
+  resend_share: 0.06
+  correction_share: 0.03
+  stuck_meters: 6
+  utc_z_share: 0.3
+hems:
+  report_minutes:
+  - 6
+  - 40
+  offline_share: 0.06
+  reset_share: 0.006
+  duplicate_share: 0.04
+trades:
+  amend_share: 0.08
+  cancel_share: 0.04
+  resend_share: 0.06

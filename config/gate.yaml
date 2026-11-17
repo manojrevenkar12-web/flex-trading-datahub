@@ -1,0 +1,15 @@
+# The release gate. Written after the first dev results and before the held-out world was run. Not moved afterwards.
+lines:
+  - {name: dbt builds and every dbt test passes, metric: dbt.ok, op: '==', value: true}
+  - {name: every delivery day has its quarter hours (92 / 96 / 100), metric: relative.calendar_ok_share, op: '==', value: 1.0}
+  - {name: portfolio energy off by under 1% in total, metric: relative.net_abs_error_share, op: '<=', value: 0.01}
+  - {name: quarter hours within 0.5% of the true net load, metric: designs.datahub.net_within_half_percent, op: '>=', value: 0.70}
+  - {name: days with procurement cost within 1%, metric: designs.datahub.days_procurement_within_1pct, op: '>=', value: 0.95}
+  - {name: "imbalance cost error, as a share of the first version's", metric: relative.imbalance_error_vs_first_version, op: '<=', value: 0.10}
+  - {name: "attribution error, as a share of the first version's", metric: relative.attribution_error_vs_first_version, op: '<=', value: 0.10}
+  - {name: every stuck register found, metric: faults.stuck_meters_found, op: '==', ref: faults.stuck_meters_planted}
+  - {name: no working meter called stuck, metric: faults.stuck_meters_false_alarms, op: '==', value: 0}
+  - {name: no substitute value left once a measured one arrived, metric: faults.substitute_values_left_after_versions, op: '==', value: 0}
+  - {name: every resent file skipped, metric: relative.duplicates_skipped_share, op: '==', value: 1.0}
+  - {name: a second run changes nothing, metric: idempotent.marts_unchanged, op: '==', value: true}
+  - {name: the forecast backtest is what production gets, metric: forecast.gate_features.optimism_kwh, op: '<=', value: 0.1}

@@ -1,0 +1,17 @@
+[project]
+name = "flex-trading-datahub"
+version = "0.1.0"
+description = "Smart-meter, HEMS, weather, market and trade data for a dynamic-tariff trading desk: landed once, built with dbt on DuckDB, scheduled by Airflow, shown in Dash."
+requires-python = ">=3.11"
+
+[tool.ruff]
+line-length = 140
+target-version = "py311"
+extend-exclude = ["dbt/target", "dbt/dbt_packages"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501", "B905"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
